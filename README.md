@@ -43,7 +43,7 @@ _**Text Saver**_ is a Django based application the provides API endpoints for sa
    
 ## API Endpoints:
 ##### User:
-1. User Login: `/user/login/` [POST]
+1. User Login: `/user/login/` [POST] (new user will be created if doesn't exists)
 2. User token refresh: `/user/token-refresh/` [POST]
 
 ##### Text Snippets:
