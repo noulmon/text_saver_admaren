@@ -24,7 +24,7 @@ _**Text Saver**_ is a Django based application the provides API endpoints for sa
    
     ```python manage.py collectstatic```
 
- 4. To login to admin panel, we have to create a superuser:
+ 4. To login to admin panel, we have to create a superuser(input email and password):
  
     ```python manage.py createsuperuser```
     
@@ -33,5 +33,26 @@ _**Text Saver**_ is a Django based application the provides API endpoints for sa
         http://127.0.0.1:8000/admin/
     
     On signing in to the admin panel, admin users can:
-    ```1. Add users```
-    ```2. Add text snippets```
+    
+        ```1. Add users```
+        ```2. Add text snippets```
+
+## API Documentation:
+   - JSON file(postman collection): ``docs/api/TEXT_SAVER_ADMAREN.postman_collection.json``
+   - Browsable Documentation: `https://documenter.getpostman.com/view/6826654/TVRg9AKj` 
+   
+## API Endpoints:
+##### User:
+1. User Login: `/user/login/` [POST]
+2. User token refresh: `/user/token-refresh/` [POST]
+
+##### Text Snippets:
+1. Overview: `/text_snippet/overview/` [GET]
+2. Create: `/text_snippet/create/` [POST]
+3. Detail: `/text_snippet/detail/<int:pk>/` [GET]
+4. Update: `/text_snippet/update/<int:pk>/` [PATCH]
+5. Delete: `/text_snippet/delete/<int:pk>/` [DELETE]
+
+##### TAGs:
+1. List: `/text_snippet/tag/list/` [GET]
+2. Detail: `/text_snippet/tag/detail/<int:pk>/` [GET]

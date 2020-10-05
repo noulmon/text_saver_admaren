@@ -17,7 +17,7 @@ class Tag(models.Model):
 
 
 class TextSnippet(models.Model):
-    title = models.CharField(_('Title'), max_length=100, unique=True)
+    title = models.CharField(_('Title'), max_length=100)
     content = models.TextField(_('Content'), blank=False)
     timestamp = models.DateTimeField(_('Timestamp'), auto_now=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='texts')
