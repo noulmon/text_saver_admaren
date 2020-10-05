@@ -16,7 +16,7 @@ class TextSnippetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TextSnippet
-        fields = ('title', 'content', 'created_by', 'tag', 'timestamp')
+        fields = ('id', 'title', 'content', 'created_by', 'tag', 'timestamp')
         read_only_fields = ('id', 'created_by',)
 
     @transaction.atomic()
@@ -41,14 +41,14 @@ class TextSnippetSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('title',)
+        fields = '__all__'
 
     def to_representation(self, instance):
         def get_text_snippets():
             '''
-            returns all the text snippets related to a particular tag
+            returns all the ACTIVE text snippets related to a particular tag
             '''
-            texts = instance.texts.all()
+            texts = instance.texts.filter(is_deleted=False)
             return TextSnippetSerializer(texts, many=True).data
 
         return {
